@@ -16,8 +16,6 @@ exports.index = function(req, res, next){
     });
 };
 
-var cheerio = require('cheerio');
-var request = require('request');
 exports.imdb = function(req, res, next){
    //if (!req.body.url || req.body.url !== 'true') return next();
    if (!req.body || !req.body.url) {
