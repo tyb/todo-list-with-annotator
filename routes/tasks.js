@@ -14,15 +14,62 @@ exports.list = function(req, res, next){
 };
 
 exports.add = function(req, res, next){
-  if (!req.body || !req.body.name) return next(new Error('No data provided.'));
+  if (!req.body || !req.body.name) {
+	  console.log(req.body);
+	  return next(new Error('No data provided.'));
+  }
   req.db.tasks.save({
     name: req.body.name,
-    completed: false
+    
+    completed: false,
+    /*
+    	function() {
+    	res.method='get';
+    	res.status(301);
+    	res.redirect('/tasks');
+    }
+    */
+    
+    //completed:false 
   }, function(error, task){
     if (error) return next(error);
     if (!task) return next(new Error('Failed to save.'));
     console.info('Added %s with id=%s', task.name, task._id);
+    
+    var ajax = req.xhr; //false
+    //console.info('req' + req); prints []object Object]
+    //console.info(ajax);
+    //console.info('x');
+    
+    if(ajax) {
+    	console.info('ajax');
+        //res.status(301).json({'msg':'redirect','location':'/tasks'});
+    	res.contentType('application/json');
+    	var data = JSON.stringify('/tasks');
+    	res.header('Content-Length', data.length);
+    	res.end(data);
+    
+    }
+    else {
+        req.method = 'get';
+        res.status(301).redirect('/tasks');
+        //Or if you prefer plain text
+        //res.status(333).send("Redirect");
+    }
+    //res.writeHead(301, {location: '/tasks'});
+    //res.end();
+    //console.log(res);
+    /*
+    res.method='get';
+    res.status(301);
     res.redirect('/tasks');
+    /*
+    res.send({
+        retStatus : retStatus,
+        redirectTo: '/tasks',
+        msg : 'Just go there please' // this should help
+      });
+      */
   })
 };
 
