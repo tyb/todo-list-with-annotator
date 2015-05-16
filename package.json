@@ -1,11 +1,21 @@
 {
-  "name": "todo-more",
+  "name": "application-name",
   "version": "0.0.0",
   "description": "taha todo & more denemeler",
   "main": "app.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
+  "dependencies": {
+	    "express": "3.3.5",
+	    "jade": "*",
+	    "mongoskin": "~0.6.0",
+	    "less-middleware": "~0.1.12",
+	    "cheerio": "*",
+	    "request": "*"
+   },
   "repository": {
     "type": "git",
     "url": "https://github.com/tyb/todo-more"
@@ -18,13 +28,5 @@
   "bugs": {
     "url": "https://github.com/tyb/todo-more/issues"
   },
-  "homepage": "https://github.com/tyb/todo-more",
-  "dependencies": {
-	    "express": "3.3.5",
-	    "jade": "*",
-	    "mongoskin": "~0.6.0",
-	    "less-middleware": "~0.1.12",
-	    "cheerio": "*",
-	    "request": "*"
-   }
+  "homepage": "https://github.com/tyb/todo-more"
 }
