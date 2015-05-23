@@ -4,6 +4,8 @@
  * 12.05.2015
  * Empire Strikes Back!
  */
+var cheerio = require('cheerio');
+var request = require('request');
 
 /*
  * INPUT: movie url from imdb

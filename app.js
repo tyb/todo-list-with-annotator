@@ -8,8 +8,7 @@ var tasks = require('./routes/tasks');
 var scrapes = require('./routes/scrapes');
 var http = require('http');
 var path = require('path');
-var cheerio = require('cheerio');
-var request = require('request');
+
 
 var mongoskin = require('mongoskin');
 var db = mongoskin.db('mongodb://localhost:27017/todo?auto_reconnect', {safe:true});
