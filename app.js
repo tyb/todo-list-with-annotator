@@ -9,9 +9,11 @@ var scrapes = require('./routes/scrapes');
 var http = require('http');
 var path = require('path');
 
+var db_uri = process.env.PROD_MONGOLAG || 'mongodb://localhost:27017/todo?auto_reconnect';
 
 var mongoskin = require('mongoskin');
-var db = mongoskin.db('mongodb://localhost:27017/todo?auto_reconnect', {safe:true});
+//var db = mongoskin.db('mongodb://localhost:27017/todo?auto_reconnect', {safe:true});
+var db = mongoskin.db(db_uri, {safe:true});
 
 /* Taha: todo: express.js araþtýr 
  * Creating server instance
